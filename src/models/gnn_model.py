@@ -19,7 +19,7 @@ class ToxGNN(torch.nn.Module):
         x = self.conv3(x, edge_index)
 
         # 2. Readout layer
-        x = global_mean_pool(x, batch)  # [batch_size, hidden_channels]
+        x = global_mean_pool(x, batch) # [batch_size, hidden_channels]
 
         # 3. Apply a final classifier
         x = F.dropout(x, p=0.5, training=self.training)
@@ -27,10 +27,11 @@ class ToxGNN(torch.nn.Module):
         
         return x
 
-def get_model(num_features=1, hidden_dim=64):
+def get_model(num_features=78, hidden_dim=64):
+    """Returns the ToxGNN model. Default num_features=78 for advanced featurization."""
     return ToxGNN(num_node_features=num_features, hidden_channels=hidden_dim)
 
 if __name__ == "__main__":
     model = get_model()
-    print(\"GNN Model initialized.\")
+    print("GNN Model initialized.")
     print(model)
