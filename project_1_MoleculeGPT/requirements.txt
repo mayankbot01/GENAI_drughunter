@@ -1,0 +1,9 @@
+rdkit
+selfies
+torch
+transformers
+accelerate
+langchain
+langgraph
+pandas
+numpy
